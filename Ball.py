@@ -2,12 +2,13 @@ import pygame
 from random import *
 
 class Ball:
-    def __init__(self, window, wigth, heigth):
+    def __init__(self, window, wigth, heigth, color):
         pygame.init()
         # Инициализируем 
         self.window = window # экран
         self.wigth = wigth # Длину
         self.heigth = heigth # Ширину
+        self.color = color
 
         # Атрибуты круга
         self.x = randrange(40, (self.wigth - 80))
@@ -37,4 +38,5 @@ class Ball:
     
     def update(self):
         # Отображаем на экране
-        pygame.draw.circle(self.window, "White", (self.x, self.y), 40)
+        pygame.draw.circle(self.window, self.color, (self.x, self.y), 40)
+        self.rect = pygame.Rect((self.x, self.y, 50, 50))
